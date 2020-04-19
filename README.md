@@ -19,7 +19,22 @@ npm run dev
 
 ## Usage
 
-TODO: Write usage instructions
+To use the bridge you need to set a series of environment variables:
+
+#### InfluxDB
+* ```INFLUX_HOST``` Required - defines the hostname of the Influxdb instance 
+* ```INFLUX_PORT``` Default 8086 - defines the port to use to contact the Influxdb instance
+* ```INFLUX_DB_NAME``` Required - database name to write to
+* ```INFLUX_USERNAME`` Required -  database username to connect with
+* ```INFLUX_PASSWORD`` Required - database password to connect with
+
+#### MQTT
+* ```MQTT_HOST``` Required - defines the hostname of the MQTT broker
+* ```MQTT_USERNAME``` Required - MQTT username
+* ```MQTT_PASSWORD``` Required - MQTT password
+* ```MQTT_PROTOCOL``` Defaults to tls
+* ```MQTT_TOPICS``` Required - comma seperated list of topics to listen to e.g ```MQTT_TOPICS=/topic1,/topic2``` or use ```#``` for all topics on broker
+
 
 ## Contributing
 
