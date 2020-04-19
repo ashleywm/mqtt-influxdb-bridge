@@ -1,0 +1,24 @@
+{
+  "name": "mqtt-influxdb-bridge",
+  "version": "1.0.0",
+  "description": "Node.js implementation of a MQTT to Influxdb bridge for recording sensor data transmitted over MQTT to InfluxDB",
+  "main": "index.js",
+  "author": "Ashley Morris",
+  "license": "MIT",
+  "scripts": {
+    "dev": "cross-env nodemon ./index.js",
+    "production": "cross-env node ./index.js"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "nodemon": "^2.0.3"
+  },
+  "dependencies": {
+    "consola": "^2.11.3",
+    "cross-env": "^7.0.2",
+    "influx": "^5.5.1",
+    "mqtt": "^3.0.0"
+  }
+}
