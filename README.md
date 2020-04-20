@@ -32,10 +32,10 @@ ENV_VARS=something node index.js
 Using this MQTT bridge your message payload must have a similar schema:
 
 ```json
-{"measurement": value}
+{"temperature": 21.10}
 ```
 
-You can have multiple measurements per payload for example:
+You can also have multiple measurements per payload for example:
 
 ```json
 {"temperature": 21.10, "pressure": 1020, "humidity": 37}
@@ -73,7 +73,6 @@ To use the bridge you need to set a series of environment variables:
 * ```MQTT_PASSWORD``` Required - MQTT password
 * ```MQTT_PROTOCOL``` Defaults to tls
 * ```MQTT_TOPICS``` Required - comma seperated list of topics to listen to e.g ```MQTT_TOPICS=/topic1,/topic2``` or use ```#``` for all topics on broker
-
 
 ## Contributing
 
