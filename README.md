@@ -4,6 +4,12 @@ Node.js implementation of a MQTT to Influxdb bridge for recording sensor data tr
 
 ## Installation
 
+Prerequisites
+* Node.js 12 
+* MQTT Broker
+* InfluxDB
+
+### Development Mode
 Yarn
 
 ```
@@ -11,22 +17,55 @@ yarn install
 yarn run dev
 ```
 
-npm 
+NPM 
 ```
 npm install
 npm run dev
 ```
+### Production
+```
+ENV_VARS=something node index.js
+```
 
 ## Usage
 
+Using this MQTT bridge your message payload must have a similar schema:
+
+```json
+{"measurement": value}
+```
+
+You can have multiple measurements per payload for example:
+
+```json
+{"temperature": 21.10, "pressure": 1020, "humidity": 37}
+```
+
+Which will then be converted into the following schema and written to InfluxDB:
+
+```json
+{
+  "measurement" : "temperature",
+  "tags": {
+    "topic": "/my-topic/sensor/bme280",
+  },
+  "fields": {
+    "value": 21.10
+   }
+}...
+```
+
+NOTE: The value is expected to be a float
+
+### Environment Variables
 To use the bridge you need to set a series of environment variables:
 
 #### InfluxDB
 * ```INFLUX_HOST``` Required - defines the hostname of the Influxdb instance 
 * ```INFLUX_PORT``` Default 8086 - defines the port to use to contact the Influxdb instance
 * ```INFLUX_DB_NAME``` Required - database name to write to
-* ```INFLUX_USERNAME`` Required -  database username to connect with
-* ```INFLUX_PASSWORD`` Required - database password to connect with
+* ```INFLUX_USERNAME``` Required -  database username to connect with
+* ```INFLUX_PASSWORD``` Required - database password to connect with
 
 #### MQTT
 * ```MQTT_HOST``` Required - defines the hostname of the MQTT broker
@@ -47,4 +86,4 @@ To use the bridge you need to set a series of environment variables:
 
 ## License
 
-MIT 
+[MIT](LICENSE.MD)
