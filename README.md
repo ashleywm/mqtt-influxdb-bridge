@@ -85,4 +85,4 @@ To use the bridge you need to set a series of environment variables:
 
 ## License
 
-[MIT](LICENSE.MD)
+[MIT](LICENSE.md)
