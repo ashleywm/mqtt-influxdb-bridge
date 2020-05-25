@@ -11,8 +11,8 @@ steps:
       PASSWORD:
         from_secret: docker_password
     settings:
-      username: $USERNAME
-      password: $PASSWORD
+      username: USERNAME
+      password: PASSWORD
       repo: ashleywm/mqtt-influxdb-bridge
       tags: latest
 
