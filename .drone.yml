@@ -1,0 +1,23 @@
+kind: pipeline
+type: docker
+name: default
+
+  steps:
+  - name: publish
+    image: docker
+    secrets:
+      - source: docker_username
+        target: DOCKER_USERNAME
+      - source: docker_password
+        target: DOCKER_PASSWORD
+    commands:
+
+      - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      - docker build -t ashleywm/mqtt-influxdb-bridge .
+      - docker push ashleywm/mqtt-influxdb-bridge
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  trigger:
+    branch:
+    - master
