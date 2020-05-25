@@ -5,14 +5,12 @@ name: default
 steps:
   - name: publish
     image: plugins/docker
-    environment:
-      USERNAME:
-        from_secret: docker_username
-      PASSWORD:
-        from_secret: docker_password
     settings:
-      username: USERNAME
-      password: PASSWORD
+      auto_tag: true
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
       repo: ashleywm/mqtt-influxdb-bridge
       tags: latest
 
