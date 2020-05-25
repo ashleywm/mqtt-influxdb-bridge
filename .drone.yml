@@ -4,16 +4,17 @@ name: default
 
 steps:
   - name: publish
-    image: docker
+    image: plugins/docker
     environment:
       USERNAME:
         from_secret: docker_username
       PASSWORD:
         from_secret: docker_password
-    commands:
-      - docker login -u $USERNAME -p $PASSWORD
-      - docker build -t ashleywm/mqtt-influxdb-bridge .
-      - docker push ashleywm/mqtt-influxdb-bridge
+    settings:
+      username: $USERNAME
+      password: $PASSWORD
+      repo: ashleywm/mqtt-influxdb-bridge
+      tags: latest
 
 trigger:
   branch:
