@@ -11,7 +11,7 @@ steps:
       PASSWORD:
         from_secret: docker_password
     commands:
-      - docker login -u USERNAME -p PASSWORD
+      - docker login -u $USERNAME -p $PASSWORD
       - docker build -t ashleywm/mqtt-influxdb-bridge .
       - docker push ashleywm/mqtt-influxdb-bridge
 
