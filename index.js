@@ -61,12 +61,12 @@ client.on("connect", () => {
 
 client.on("offline", () => {
   consola.warn("MQTT broker connection failed");
-  // process.exit(1);
+  process.exit(1);
 });
 
 client.on("error", (error) => {
   consola.error("MQTT Client Error:", error);
-  // process.exit(1);
+  process.exit(1);
 });
 
 client.on("message", (topic, message) => {
